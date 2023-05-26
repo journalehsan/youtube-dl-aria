@@ -1,30 +1,39 @@
-PLEASE NOTE:
+# ِِYoutube Downloader with aria
 
-youtube-dl-aria is obsolete - youtube-dl added builtin support for external
-downloaders early 2015.
+A simple script to download videos from YouTube using youtube-dl and aria2.
 
-If you want to duplicate the behaviour of youtube-dl-aria using just
-youtube-dl, you can run:
+## Requirements
 
-mkdir -p ~/.config/youtube-dl/
-cat > ~/.config/youtube-dl/config <<EOF
--o "[%(upload_date)s][%(id)s] %(title)s (by %(uploader)s).%(ext)s"
---external-downloader aria2c
---external-downloader-args "-c -j 3 -x 3 -s 3 -k 1M"
-EOF
+- Python 3
+- youtube-dl
+- aria2
+- tqdm
 
-youtube-dl-aria
-===============
-A wrapper that speeds up youtube-dl downloads by utilising aria2's
-capability of opening multiple connections per server.
+## Usage
 
+To download a video from a given URL, run the script with the -d or --download option followed by the URL. For example:
 
-Dependencies
-============
- * youtube-dl (http://rg3.github.io/youtube-dl/)
- * aria2 (http://aria2.sourceforge.net/)
+```bash
+python youtubedl.py -d https://www.youtube.com/watch?v=9bZkp7q19f0
+```
 
+The script will create a file with the following format:
 
-License
-=======
-ISC.
+[upload_date][id] title (by uploader).ext
+
+For example:
+
+[20120715][9bZkp7q19f0] PSY - GANGNAM STYLE(강남스타일) M/V (by officialpsy).mp4
+
+The script will also show a progress bar for each video download.
+
+## License
+
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- This project was inspired by this [blog post](https://blog.jonlu.ca/posts/youtube-dl).
+- This project uses [youtube-dl](https://github.com/ytdl-org/youtube-dl) and [aria2](https://github.com/aria2/aria2) to download videos from YouTube.
+- This project uses [tqdm](https://github.com/tqdm/tqdm) to add a progress bar to the downloads.
+- This project was helped by Bing, who wrote some of the code and gave some useful tips. Thank you Bing!😊
